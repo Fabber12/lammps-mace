@@ -35,4 +35,4 @@ Activate the virtual environment `source MACEpath/.mace_env/bin/activate`
 
 Load Cuda 12.6 `module load cuda/12.6`.
 
-Convert the model `python3 MACEpath/mace/cli/create_lammps_model.py /path/to/model/X.model`, you will obtain a Y.pt file to use with LAMMPS-MACE
+Convert the model `python3 MACEpath/mace/cli/create_lammps_model.py /path/to/model/X.model`, you will obtain a Y.pt file to use with LAMMPS-MACE. See `example.in` for a simple LAMMPS-MACE input file.
