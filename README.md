@@ -1,5 +1,5 @@
 # lammps-mace
-GPU installation of LAMMPS-MACE using module environement in HPC.
+GPU installation of LAMMPS-MACE using Environment Modules in HPC.
 This guide is based on CINECA cluster architectures.
 
 Create an installation folder and enter it `mkdir -p $HOME/programs/LAMMPS-MACE && cd $HOME/programs/LAMMPS-MACE`.
