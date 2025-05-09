@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=IscrB_NEXT-LIB
 #SBATCH --partition=boost_usr_prod # partition to be used
-#SBATCH --qos boost_qos_dbg
+#SBATCH --qos=boost_qos_dbg
 #SBATCH --time 00:10:00 # format: HH:MM:SS
 #SBATCH --nodes=1 # node
 #SBATCH --ntasks-per-node=1 # tasks out of 32
