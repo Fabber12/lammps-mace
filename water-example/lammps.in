@@ -9,7 +9,7 @@ atom_modify 	map yes
 newton on
 
 # ------------- Read geometry -------------------
-read_data	water1000.data
+read_data	minimized_water.data
 
 # ------------- Define interatomic potential ----
 pair_style	mliap unified /leonardo_work/IscrB_NEXT-LIB/FABIANO/mace/models/MACE-OFF23_medium.model-mliap_lammps.pt 0
@@ -28,7 +28,7 @@ compute	  	myTemp all temp
 
 # ------------- Minimise structure first --------
 thermo 		100
-thermo_style 	custom step cpu pe lx ly lz c_myTemp c_eatoms press
+thermo_style 	custom step cpu temp pe press
 
 
 dump            d1 all custom 1000 water.dump id element x y z 
@@ -38,14 +38,14 @@ timestep 	0.0005
 #velocity	all create 300.0 11123
 
 # -------- Energy minimization --------
-minimize        1e-25 1e-25 10000 10000
-min_style 	 cg 
+#minimize        1e-25 1e-25 10000 10000
+#min_style 	 cg 
 
-fix 		1 all box/relax iso 0.0 vmax 0.0005
-minimize 	0.0 1.0e-6 5000 200000
-unfix 1
+#fix 		1 all box/relax iso 0.0 vmax 0.0005
+#minimize 	0.0 1.0e-6 5000 200000
+#unfix 1
 
-write_data minimized_water.data nocoeff
+#write_data minimized_water.data nocoeff
 
 # ----------- Run -----------
 velocity        all create 300.0 11123
