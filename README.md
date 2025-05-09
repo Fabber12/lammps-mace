@@ -100,7 +100,7 @@ mv lammps-mliap_modulefile $HOME/modules/.
 ```bash
 module use $HOME/modules
 ```
-An example of how to submit a job to run a simple simulation is provided in ML-IAP_water_benchmark
+An example of how to submit a job to run a simple simulation is provided in `water-example` directory
 ##
 
 ## PyTorch-MACE
