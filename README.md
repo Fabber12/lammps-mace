@@ -78,7 +78,7 @@ Move `lammps-mliap_modulefile` in the modulefile folder (I created this director
 mv lammps-mliap_modulefile $HOME/modules/.
 ```
 
-### If you want to use your module, remember to import it
+### If you want to use your module, remember to import it before using it
 ```bash
 module use $HOME/modules
 ```
