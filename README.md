@@ -29,6 +29,7 @@ mv libtorch libtorch-gpu
 sbatch build-mace.sh
 ```
 
+##
 
 ## LAMMPS-MACE with ML-IAP interface
 
@@ -99,33 +100,35 @@ mv lammps-mliap_modulefile $HOME/modules/.
 ```bash
 module use $HOME/modules
 ```
+An example of how to submit a job to run a simple simulation is provided in ML-IAP_water_benchmark
+##
 
 ## PyTorch-MACE
 ### Installation of the machine learning software
 
-## Set installation path
+### Set installation path
 ```bash
 MACEpath=/up/to/you
 ```
 
-## Virtual environment
+### Virtual environment
 ```bash
 cd $MACEpath
 python3 -m venv .mace_env
 source $MACEpath/.mace_env/bin/activate
 ```
 
-## Load CUDA
+### Load CUDA
 ```bash
 module load cuda/12.6
 ```
 
-## Clone repository
+### Clone repository
 ```bash
 git clone https://github.com/ACEsuit/mace.git
 ```
 
-## Install via pip
+### Install via pip
 ```bash
 pip install ./mace
 ```
