@@ -1,0 +1,66 @@
+#%Module1.0#####################################################################
+##
+## lammps-mace-mliap                                 ##
+##
+proc ModulesHelp { } {
+        global version
+        global root
+
+        puts stderr "\tSets up environment for LAMMPS-MACE-MLIAP"
+        puts stderr ""
+        puts stderr "\tLAMMPS engine compiled on 07/05/2025 by FTarulli."
+        puts stderr ""
+        puts stderr "\tACCELERETORS:"
+        puts stderr "\tOPT, OpenMP, KOKKOS"
+        puts stderr ""
+}
+
+module-whatis "lammps-MACE GPU - LAMMPS Molecular Dynamics Simulator\n\t\t"
+
+set     version 20250402_patch_2Apr2025-299-gc1e9adbd80-modified
+set     root    /leonardo/home/userexternal/ftarulli/programs/LAMMPS-MACE_MLIAP/build-mliap
+
+setenv  LAMMPS_POTENTIALS       $root/share/lammps/potentials
+setenv  MSI2LMP_LIBRARY       $root/share/lammps/frc_files
+
+prepend-path    PATH            $root
+prepend-path    PATH            $root/bin
+prepend-path    MANPATH         $root/share/man
+
+prepend-path LD_LIBRARY_PATH $root/lib
+prepend-path LD_LIBRARY_PATH $root/lib64
+#prepend-path PYTHONPATH      $root/lib/python3.10/site-packages
+
+if ![ is-loaded python/3.11.6--gcc--8.5.0 ] {
+    module load python/3.11.6--gcc--8.5.0
+}
+
+if ![ is-loaded gcc/12.2.0 ] {
+    module load gcc/12.2.0
+}
+if ![ is-loaded gsl/2.7.1--gcc--12.2.0 ] {
+    module load gsl/2.7.1--gcc--12.2.0
+}
+if ![ is-loaded openmpi/4.1.6--gcc--12.2.0 ] {
+    module load openmpi/4.1.6--gcc--12.2.0
+}
+if ![ is-loaded fftw/3.3.10--openmpi--4.1.6--gcc--12.2.0 ] {
+    module load fftw/3.3.10--openmpi--4.1.6--gcc--12.2.0
+}
+if ![ is-loaded openblas/0.3.24--gcc--12.2.0 ] {
+    module load openblas/0.3.24--gcc--12.2.0
+}
+if ![ is-loaded cuda/12.1 ] {
+    module load cuda/12.1
+}
+if ![ is-loaded intel-oneapi-mkl/2023.2.0 ] {
+    module load intel-oneapi-mkl/2023.2.0
+}
+
+if { [module-info mode load] || [module-info mode switch2] } {
+    puts stdout "source $env(HOME)/venvs/.lammps-mliap/bin/activate"
+} elseif { [module-info mode remove] && ![module-info mode switch3] } {
+    puts stdout "deactivate;"
+}
+
+conflict lammps
