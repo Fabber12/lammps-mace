@@ -1,0 +1,58 @@
+# ------------- Initialise -------------
+clear 
+units		metal
+dimension	3
+boundary	p p p
+atom_style	atomic
+atom_modify 	map yes
+#package omp 	32
+newton on
+
+# ------------- Read geometry -------------------
+read_data	water1000.data
+
+# ------------- Define interatomic potential ----
+pair_style	mliap unified /leonardo_work/IscrB_NEXT-LIB/FABIANO/mace/models/MACE-OFF23_medium.model-mliap_lammps.pt 0
+pair_coeff      * * O H
+
+# ------------- Define settings -----------------
+
+variable	E equal pe
+variable        N equal atoms
+compute         eng all pe/atom
+compute		eatoms all reduce sum c_eng
+compute         1 all stress/atom NULL virial 
+compute 	csym all centro/atom bcc
+compute 	keng all ke/atom
+compute	  	myTemp all temp
+
+# ------------- Minimise structure first --------
+thermo 		100
+thermo_style 	custom step cpu pe lx ly lz c_myTemp c_eatoms press
+
+
+dump            d1 all custom 1000 water.dump id element x y z 
+dump_modify     d1 element O H
+
+timestep 	0.0005
+#velocity	all create 300.0 11123
+
+# -------- Energy minimization --------
+minimize        1e-25 1e-25 10000 10000
+min_style 	 cg 
+
+fix 		1 all box/relax iso 0.0 vmax 0.0005
+minimize 	0.0 1.0e-6 5000 200000
+unfix 1
+
+write_data minimized_water.data nocoeff
+
+# ----------- Run -----------
+velocity        all create 300.0 11123
+
+fix		2 all nvt temp 300.0 300.0 0.05
+run 5000
+unfix 2
+
+print		"^--- Number of Particles = $N, Energy  = $E"
+
