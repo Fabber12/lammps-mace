@@ -49,7 +49,7 @@ cd LAMMPS-MACE_MLIAP
 ```
 Edit `cmake/presets/kokkos-cuda.cmake` and replace `PASCAL60` with `AMPERE80`.
 
-### Run the the script to compile
+### Run `build-mace_mliap.sh` script to compile
 ```bash
 sbatch build-mace_mliap.sh
 ```
