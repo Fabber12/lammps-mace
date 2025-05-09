@@ -13,7 +13,7 @@ Extract all and remove the source .zip file `unzip libtorch-shared-with-deps-2.2
 Submit a batch script for automatise the installation `sbatch build-mace.sh`
 
 
-## LAMMPS-MACE with MLIAP interface
+## LAMMPS-MACE with ML-IAP interface
 
 ### Prerequisites
 ```bash
