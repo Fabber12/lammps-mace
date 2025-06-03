@@ -62,6 +62,7 @@ pip install mace-torch
 ```bash
 cd $HOME/programs
 git clone https://github.com/lammps/lammps.git
+git checkout patch_2Apr2025
 mv lammps LAMMPS-MACE_MLIAP
 cd LAMMPS-MACE_MLIAP
 ```
