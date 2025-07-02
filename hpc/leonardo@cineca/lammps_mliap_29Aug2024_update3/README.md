@@ -38,6 +38,14 @@ git checkout stable_29Aug2024_update3
 >
 > ```bash
 > git log -1
+> # commit 81980666de9ec2b1694e82a9b55d28ec29e8db07 (HEAD, > # tag: stable_29Aug2024_update3, origin/stable)
+> # Merge: 0435e156ba 7d4757e745
+> # Author: Axel Kohlmeyer <akohlmey@gmail.com>
+> # Date:   Thu Jun 12 23:06:51 2025 -0400
+> #
+> #    Merge pull request #4531 from lammps/maintenance
+> #
+> #    Third Set of Collected Bug Fixes and Maintenance Updates for 29 August 2024 Stable Release
 > ```
 
 
@@ -57,10 +65,10 @@ source .lammps-mliap/bin/activate
 pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 \
             --index-url https://download.pytorch.org/whl/cu121
 pip install cuequivariance-ops-cu12==0.4.0   # resolves dependency issues with torch 2.5.0
-pip install cuequivariance-ops-torch-cu12==0.4.0
+pip install cuequivariance-ops-torch-cu12==0.4.0 # resolves dependency issues with torch 2.5.0
 pip install numpy==2.1
 pip install cupy-cuda12x
-pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014
+pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014 https://github.com/ACEsuit/mace/discussions/1014
 ```
 
 
