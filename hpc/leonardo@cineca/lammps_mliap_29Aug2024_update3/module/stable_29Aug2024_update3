@@ -1,0 +1,83 @@
+#%Module1.0#####################################################################
+##
+## lammps-mace-mliap                                 ##
+##
+proc ModulesHelp { } {
+        global version
+        global root
+
+        puts stderr "\tSets up environment for LAMMPS-MACE-MLIAP"
+        puts stderr ""
+        puts stderr "\tLAMMPS engine compiled on 01/07/2025 by PDA."
+        puts stderr ""
+        puts stderr "\tACCELERETORS:"
+        puts stderr "\tOPT, OpenMP, KOKKOS, GPU"
+        puts stderr ""
+        puts stderr "\tPACKAGES:"
+        puts stderr "\tATC OPENMP KSPACE MANYBODY MOLECULE RIGID PLUMED DIELECTRIC DIPOLE ELECTRODE"
+        puts stderr "\tMC MEAM MOLFILE OPT QEQ REACTION REAXFF REPLICA PYTHON ML-IAP ML-MACE ML-SNAP"
+        puts stderr "\tEXTRA-COMPUTE EXTRA-DUMP EXTRA-FIX EXTRA-MOLECULE EXTRA-PAIR"
+        puts stderr ""
+}
+
+module-whatis "lammps-MACE GPU - LAMMPS Molecular Dynamics Simulator\n\t\t"
+
+set     version         29Aug2024_update3
+set     root            <PATH_TO_LAMMPS_REPO>/build
+set     venv_path       <PATH_TO_LAMMPS_REPO>/.lammps-mliap
+
+setenv  LAMMPS_POTENTIALS       $root/share/lammps/potentials
+setenv  MSI2LMP_LIBRARY       $root/share/lammps/frc_files
+
+prepend-path    PATH            $root
+prepend-path    PATH            $root/bin
+prepend-path    MANPATH         $root/share/man
+
+prepend-path LD_LIBRARY_PATH $root/lib
+prepend-path LD_LIBRARY_PATH $root/lib64
+#prepend-path PYTHONPATH      $root/lib/python3.10/site-packages
+
+# PRE REQ
+
+if ![ is-loaded profile/chem-phys ] {
+    module load profile/chem-phys
+}
+
+if ![ is-loaded python/3.11.6--gcc--8.5.0 ] {
+    module load python/3.11.6--gcc--8.5.0
+}
+
+if ![ is-loaded gcc/12.2.0 ] {
+    module load gcc/12.2.0
+}
+if ![ is-loaded gsl/2.7.1--gcc--12.2.0 ] {
+    module load gsl/2.7.1--gcc--12.2.0
+}
+if ![ is-loaded openmpi/4.1.6--gcc--12.2.0 ] {
+    module load openmpi/4.1.6--gcc--12.2.0
+}
+if ![ is-loaded fftw/3.3.10--openmpi--4.1.6--gcc--12.2.0 ] {
+    module load fftw/3.3.10--openmpi--4.1.6--gcc--12.2.0
+}
+if ![ is-loaded openblas/0.3.24--gcc--12.2.0 ] {
+    module load openblas/0.3.24--gcc--12.2.0
+}
+if ![ is-loaded cuda/12.1 ] {
+    module load cuda/12.1
+}
+if ![ is-loaded intel-oneapi-mkl/2023.2.0 ] {
+    module load intel-oneapi-mkl/2023.2.0
+}
+if ![ is-loaded  plumed/2.8.1--openmpi--4.1.6--gcc--12.2.0 ] {
+    module load plumed/2.8.1--openmpi--4.1.6--gcc--12.2.0
+}
+
+# VENV
+if { [module-info mode load] || [module-info mode switch2] } {
+    puts stdout "source $venv_path/bin/activate"
+} elseif { [module-info mode remove] && ![module-info mode switch3] } {
+    puts stdout "deactivate;"
+}
+
+
+conflict lammps
