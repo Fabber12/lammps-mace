@@ -17,7 +17,6 @@
 > [!IMPORTANT]  
 > This guide is based on the **Leonardo @ CINECA** HPC cluster.
 
----
 
 ## 1  Clone the LAMMPS repository
 
@@ -41,7 +40,6 @@ git checkout stable_29Aug2024_update3
 > git log -1
 > ```
 
----
 
 ## 2  Create a virtual environment
 
@@ -65,7 +63,6 @@ pip install cupy-cuda12x
 pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014
 ```
 
----
 
 ## 3  Build LAMMPS
 
