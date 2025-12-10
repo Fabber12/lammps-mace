@@ -87,29 +87,18 @@ Otherwise, log into a node
 ```bash
 srun --partition=gpu_a40 --gres=gpu:1 --pty /bin/bash
 ```
-and follow the instruction of build.sh
+and follow the instruction of `build.sh`
 
-## 4  Create a module file
+## 4  Module file
 
-```bash
-cd $PUBLIC
-mkdir -p modules/lammps
-cd modules/lammps
-```
-
-Download the module file and replace the `<PATH_TO_LAMMPS_REPO>` placeholder with the actual path:
-
-```bash
-wget https://raw.githubusercontent.com/paolodeangelis/lammps-mace/refs/heads/main/hpc/leonardo@cineca/lammps_mliap_29Aug2024_update3/module/stable_29Aug2024_update3
-```
+Move the modulefile `mliap_22Jul2025` into `$HOME/modules/lammps`
 
 > [!TIP]
 > **Using the new module:**
 >
 > ```bash
 > module purge
-> module use -a $PUBLIC/modules
-> module load profile/chem-phys
-> module load lammps/stable_29Aug2024_update3
+> module use -a $HOME/modules
+> module load lammps/mliap_22Jul2025
 > ```
 
