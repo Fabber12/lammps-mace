@@ -1,6 +1,6 @@
-# INSTALL LAMMPS-MLIAP (stable 29 Aug 2024)
+# INSTALL LAMMPS-MLIAP (stable 22 Jul 2025)
 <div align="right">
-  by PDA
+  by FT
 </div>
 
 > [!NOTE]  
