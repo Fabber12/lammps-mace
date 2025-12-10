@@ -1,0 +1,77 @@
+#%Module1.0#####################################################################
+##
+## lammps-mace-mliap                                 ##
+##
+proc ModulesHelp { } {
+        global version
+        global root
+
+        puts stderr "\tSets up environment for LAMMPS-MACE-MLIAP"
+        puts stderr ""
+        puts stderr "\tLAMMPS engine compiled on 09/12/2025 by FT."
+        puts stderr ""
+        puts stderr "\tACCELERETORS:"
+        puts stderr "\tOPT, OpenMP, KOKKOS (multi-threading), GPU"
+        puts stderr ""
+        puts stderr "\tPACKAGES:"
+        puts stderr "\tATC OPENMP KSPACE MANYBODY MOLECULE RIGID PLUMED DIELECTRIC DIPOLE ELECTRODE"
+        puts stderr "\tMC MEAM MOLFILE OPT QEQ REACTION REAXFF REPLICA PYTHON ML-IAP ML-MACE ML-SNAP"
+        puts stderr "\tEXTRA-COMPUTE EXTRA-DUMP EXTRA-FIX EXTRA-MOLECULE EXTRA-PAIR"
+        puts stderr ""
+}
+
+## some packages listed above could not be present
+
+module-whatis "lammps-MACE GPU - LAMMPS Molecular Dynamics Simulator\n\t\t"
+
+set     version         22Jul2025_update2
+set     root            /home/ftarulli/programs/lammps_mliap_22Jul2025/build_mliap
+set     venv_path       /home/ftarulli/venv/.lammpsmace-mliap
+
+setenv  LAMMPS_POTENTIALS       $root/share/lammps/potentials
+setenv  MSI2LMP_LIBRARY       $root/share/lammps/frc_files
+
+prepend-path    PATH            $root
+prepend-path    PATH            $root/bin
+prepend-path    MANPATH         $root/share/man
+
+prepend-path LD_LIBRARY_PATH $root/lib
+prepend-path LD_LIBRARY_PATH $root/lib64
+
+#prepend-path LD_LIBRARY_PATH /share/apps/miniforge/24.3.0-0/lib
+
+# PRE REQ
+if ![ is-loaded miniforge/24.3.0-0 ] {
+    module load miniforge/24.3.0-0
+}
+
+if ![ is-loaded cmake/4.1.1 ] {
+    module load cmake/4.1.1
+}
+
+if ![ is-loaded gcc/12.4.0 ] {
+    module load gcc/12.4.0
+}
+
+if ![ is-loaded openmpi/5.0.7_gcc12 ] {
+    module load openmpi/5.0.7_gcc12
+}
+
+if ![ is-loaded openblas/0.3.30 ] {
+    module load openblas/0.3.30
+}
+
+if ![ is-loaded nvhpc-nompi/25.1 ] {
+    module load cuda/12.1
+}
+
+
+# VENV
+if { [module-info mode load] || [module-info mode switch2] } {
+    puts stdout "source $venv_path/bin/activate"
+} elseif { [module-info mode remove] && ![module-info mode switch3] } {
+    puts stdout "deactivate;"
+}
+
+
+conflict lammps
