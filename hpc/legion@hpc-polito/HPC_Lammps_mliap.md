@@ -51,6 +51,7 @@ pip install cuequivariance-ops-cu12==0.4.0   # resolves dependency issues with t
 pip install cuequivariance-ops-torch-cu12==0.4.0 # resolves dependency issues with torch 2.5.0
 pip install numpy==2.1
 pip install cupy-cuda12x
+pip install mace-torch
 pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014 https://github.com/ACEsuit/mace/discussions/1014
 ```
 
