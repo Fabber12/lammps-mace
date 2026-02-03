@@ -58,7 +58,7 @@ pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014 ht
 
 ## 3  Build LAMMPS
 
-Load the required modules:
+Required modules:
 
 ```bash
 module purge
