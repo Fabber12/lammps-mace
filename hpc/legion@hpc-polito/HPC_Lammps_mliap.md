@@ -36,7 +36,7 @@ git checkout stable_22Jul2025_update2
 
 ```bash
 cd $HOME/venv
-module load miniforge/24.3.0-0
+module load miniforge/24.3.0-0    #Python 3.10.14
 python -m venv .lammpsmace-mliap
 ```
 
