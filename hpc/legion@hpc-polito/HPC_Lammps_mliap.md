@@ -49,6 +49,7 @@ pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 \
             --index-url https://download.pytorch.org/whl/cu121
 pip install cuequivariance-ops-cu12==0.4.0   # resolves dependency issues with torch 2.5.0  # resolves dependency issues with torch 2.5.0
 pip install cuequivariance-ops-torch-cu12==0.4.0 # resolves dependency issues with torch 2.5.0
+pip install cuequivariance==0.4.0
 pip install numpy==2.1
 pip install cupy-cuda12x
 pip install mace-torch==0.3.13
