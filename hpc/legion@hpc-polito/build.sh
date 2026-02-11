@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --gres=gpu:1
-#SBATCH --output=log.out
+#SBATCH --output=slurm-%j.out
 #SBATCH --mem=32G
 
 cd $HOME/programs/lammps_mliap_22Jul2025
@@ -49,3 +49,4 @@ cmake -C kokkos-cuda.cmake \
   ../cmake
 
 make -j16
+make install-python
