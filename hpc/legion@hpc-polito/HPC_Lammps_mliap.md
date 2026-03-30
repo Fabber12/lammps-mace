@@ -1,4 +1,4 @@
-# INSTALL LAMMPS-MLIAP (stable 22 Jul 2025)
+# INSTALL LAMMPS-MLIAP (stable 6 Feb 2026) (guide to complete)
 <div align="right">
   by FT
 </div>
@@ -45,14 +45,13 @@ Activate and install Python dependencies:
 ```bash
 source .lammpsmace-mliap/bin/activate
 pip install --upgrade pip
-pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 \
-            --index-url https://download.pytorch.org/whl/cu121
-pip install cuequivariance-ops-cu12==0.4.0   # resolves dependency issues with torch 2.5.0  # resolves dependency issues with torch 2.5.0
-pip install cuequivariance-ops-torch-cu12==0.4.0 # resolves dependency issues with torch 2.5.0
-pip install cuequivariance==0.4.0
+pip install torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https://download.pytorch.org/whl/cu126
+pip install cuequivariance-ops-torch-cu12==0.9.1 
+pip install cuequivariance-ops-cu12==0.9.1 
+pip install cuequivariance==0.9.1
 pip install numpy==2.1
 pip install cupy-cuda12x
-pip install mace-torch==0.3.13
+pip install mace-torch==0.3.15
 pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014 https://github.com/ACEsuit/mace/discussions/1014
 ```
 
@@ -69,7 +68,7 @@ module load cmake/4.1.1
 module load gcc/12.4.0
 module load openmpi/5.0.7_gcc12
 module load openblas/0.3.30
-module load cuda/12.1
+module load cuda/12.6
 ```
 
 If present: edit `cmake/presets/kokkos-cuda.cmake` and replace `PASCAL60` with `AMPERE86` (for gpu_a40)
