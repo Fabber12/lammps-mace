@@ -1,4 +1,4 @@
-# INSTALL LAMMPS-MLIAP (11 Feb 2026) (guide to complete)
+# INSTALL LAMMPS-MLIAP (11 Feb 2026)
 <div align="right">
   by FT
 </div>
@@ -21,8 +21,8 @@
 ## 1  Clone the LAMMPS repository
 
 ```bash
-mkdir -p $HOME/programs
-cd $HOME/programs
+mkdir -p $SCRATCH_FLASH/programs
+cd $SCRATCH_FLASH/programs
 ````
 
 ```bash
@@ -49,6 +49,7 @@ pip install torch==2.9.0 torchvision==0.24.0 torchaudio==2.9.0 --index-url https
 pip install cuequivariance-ops-torch-cu12==0.9.1 
 pip install cuequivariance-ops-cu12==0.9.1 
 pip install cuequivariance==0.9.1
+pip install cuequivariance_torch==0.9.1
 pip install numpy==2.1
 pip install cupy-cuda12x
 pip install mace-torch==0.3.15
