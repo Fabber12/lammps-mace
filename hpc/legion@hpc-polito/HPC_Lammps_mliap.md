@@ -1,4 +1,4 @@
-# INSTALL LAMMPS-MLIAP (stable 6 Feb 2026) (guide to complete)
+# INSTALL LAMMPS-MLIAP (11 Feb 2026) (guide to complete)
 <div align="right">
   by FT
 </div>
@@ -26,8 +26,8 @@ cd $HOME/programs
 ````
 
 ```bash
-git clone https://github.com/lammps/lammps.git lammps_mliap_6Feb2026
-cd lammps_mliap_6Feb2026
+git clone https://github.com/lammps/lammps.git lammps_mliap_11Feb2026
+cd lammps_mliap_11Feb2026
 git checkout patch_11Feb2026
 ```
 
@@ -92,7 +92,7 @@ and follow the instruction of `build.sh`
 
 ## 4  Module file
 
-Move the modulefile `mliap_6Feb2026` into `$SCRATCH_FLASH/modules/lammps`
+Move the modulefile `mliap_11Feb2026` into `$SCRATCH_FLASH/modules/lammps`
 
 > [!TIP]
 > **Using the new module:**
@@ -100,6 +100,6 @@ Move the modulefile `mliap_6Feb2026` into `$SCRATCH_FLASH/modules/lammps`
 > ```bash
 > module purge
 > module use -a $SCRATCH_FLASH/modules
-> module load lammps/mliap_6Feb2026
+> module load lammps/mliap_11Feb2026
 > ```
 
