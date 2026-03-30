@@ -26,9 +26,9 @@ cd $HOME/programs
 ````
 
 ```bash
-git clone https://github.com/lammps/lammps.git lammps_mliap_22Jul2025
-cd lammps_mliap_22Jul2025
-git checkout stable_22Jul2025_update2
+git clone https://github.com/lammps/lammps.git lammps_mliap_6Feb2026
+cd lammps_mliap_6Feb2026
+git checkout patch_11Feb2026
 ```
 
 
@@ -62,7 +62,7 @@ Required modules:
 
 ```bash
 module purge
-module use $HOME/modules
+module use $SCRATCH_FLASH/modules
 module load miniforge/24.3.0-0
 module load cmake/4.1.1
 module load gcc/12.4.0
@@ -71,9 +71,9 @@ module load openblas/0.3.30
 module load cuda/12.6
 ```
 
-If present: edit `cmake/presets/kokkos-cuda.cmake` and replace `PASCAL60` with `AMPERE86` (for gpu_a40)
+If present: edit `cmake/presets/kokkos-cuda.cmake` and replace `PASCAL60` with `AMPERE86` (for gpu_a40) or `HOPPER90` (for gpu_h200)
 
-If not present: add `set(Kokkos_ARCH_AMPERE86 ON CACHE BOOL "" FORCE)` 
+If not present: add `set(Kokkos_ARCH_HOPPER90 ON CACHE BOOL "" FORCE)` 
 
 
 Submit the build job:
@@ -86,20 +86,20 @@ tail -f slurm*.out
 Otherwise, log into a node 
 
 ```bash
-srun --partition=gpu_a40 --gres=gpu:1 --pty /bin/bash
+srun --partition=gpu_h200 --gres=gpu:1 --pty /bin/bash
 ```
 and follow the instruction of `build.sh`
 
 ## 4  Module file
 
-Move the modulefile `mliap_22Jul2025` into `$HOME/modules/lammps`
+Move the modulefile `mliap_6Feb2026` into `$SCRATCH_FLASH/modules/lammps`
 
 > [!TIP]
 > **Using the new module:**
 >
 > ```bash
 > module purge
-> module use -a $HOME/modules
-> module load lammps/mliap_22Jul2025
+> module use -a $SCRATCH_FLASH/modules
+> module load lammps/mliap_6Feb2026
 > ```
 
