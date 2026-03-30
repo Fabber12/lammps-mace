@@ -35,7 +35,7 @@ git checkout patch_11Feb2026
 ## 2  Create a virtual environment
 
 ```bash
-cd $HOME/venv
+cd $SCRATCH_FLASH/venv
 module load miniforge/24.3.0-0    #Python 3.10.14
 python -m venv .lammpsmace-mliap
 ```
@@ -52,7 +52,7 @@ pip install cuequivariance==0.9.1
 pip install numpy==2.1
 pip install cupy-cuda12x
 pip install mace-torch==0.3.15
-pip install -U cython==3.0.11                # fixes LAMMPS MLIAP issue #1014 https://github.com/ACEsuit/mace/discussions/1014
+pip install -U cython==3.2
 ```
 
 
