@@ -10,15 +10,3 @@
 > A curated, always-evolving collection of hands-on install notes, build
 > recipes, and cluster-specific tips for popular Molecular-Dynamics (MD) engines.  
 
-
-## 📁 Repository layout
-
-```
-
-md-install-protocols/
-│
-├─ lammps/          > tested LAMMPS builds (classical, Kokkos/GPU, ML-IAP, ...)
-├─ examples/        > test and benchmarking inputs
-└─ README.md        < you are here
-
-````
