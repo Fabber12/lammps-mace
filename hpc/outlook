@@ -1,0 +1,10 @@
+create Arrhenius guide:
+python venv:
+  module load GPU/Python/3.13.5-bare-gcc-2025b-eb
+  pip install torch torchvision
+  pip install cuequivariance-torch
+  pip install cuequivariance-ops-cu13
+  pip install numpy==2.1
+  pip install cupy-cuda13x
+  pip install mace-torch==0.3.16
+  pip install mpi4py
