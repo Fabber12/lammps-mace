@@ -8,3 +8,6 @@ python venv:
   pip install cupy-cuda13x
   pip install mace-torch==0.3.16
   pip install mpi4py
+  pip install "cuequivariance-ops-torch-cu13==0.11.1"
+  pip install Cython 
+
